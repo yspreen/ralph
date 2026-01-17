@@ -10,6 +10,11 @@ Put your vague project description into `./userinput.txt` and let it rip:
 ./ralph.sh
 ```
 
+Or, on mac, if you want an audio queue when the loop finishes:
+
+```sh
+./ralph.sh; say Done
+```
 
 You can optionally get feedback on your userinput before starting the loop with something like:
 
