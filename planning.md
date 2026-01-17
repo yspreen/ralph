@@ -39,13 +39,13 @@ Pick the first task that's in progress or not yet started and pick the most impo
 4. [NOT STARTED] Write backend routes
 5. [NOT STARTED] Design frontend
 5. [NOT STARTED] Deploy to fly
-6. [NOT STARTED] Create and commit ./done.txt in the root of this project (i.e. ./done.txt not ./proj/done.txt)
+6. [NOT STARTED] Create and commit ./done.txt in the root of this project (i.e. ./done.txt not ./proj/done.txt; this step is straight forward, no markdown step file.)
 
 Acceptance criteria for each full step: Passing tests. Be specific about which tests are needed in ./step-$n.md
 ```
 
 In this example ./step-1.md would contain information like setting up hono, nginx as a reverse proxy to serve the static next files and hono api requests, and maybe a local test sh file which spins up postgres for running local tests.
-Each progress.txt file ALWAYS ends with a step that says: "Create and commit ./done.txt in the root of this project (i.e. not ./proj/done.txt but ./done.txt)"
+Each progress.txt file ALWAYS ends with a step that says: "Create and commit ./done.txt in the root of this project (i.e. ./done.txt not ./proj/done.txt; this step is straight forward, no markdown step file.)"
 
 ---
 
