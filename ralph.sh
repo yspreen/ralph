@@ -19,4 +19,5 @@ do
 	killer=$!
 	wait "$pid"
 	kill "$killer" 2>/dev/null
+	wait "$killer" 2>/dev/null
 done
