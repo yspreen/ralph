@@ -1,4 +1,8 @@
+![](./ralph.webp)
+
 # My Take On The Ralph Loop
+
+Inspired by the [original blogpost](https://ghuntley.com/ralph/) and theo's coverage of it.
 
 Put your vague project description into `./userinput.txt` and let it rip:
 
