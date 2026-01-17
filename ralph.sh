@@ -11,9 +11,19 @@ setup_hooks() {
 }
 [ -d hooks ] && [ -d .git ] && setup_hooks
 
+run_cycle() {
+	if [ -f blocker.md ]
+	then
+		claude --dangerously-skip-permissions -p "$(cat blocked-prompt.md)"
+		rm blocker.md
+	else
+		claude --dangerously-skip-permissions -p "$(cat prompt.md)"
+	fi
+}
+
 while ! [ -f done.txt ]
 do
-	claude --dangerously-skip-permissions -p "$(cat prompt.md)" &
+	run_cycle &
 	pid=$!
 	(sleep "$CLAUDE_TIMEOUT" && kill "$pid" 2>/dev/null) &
 	killer=$!

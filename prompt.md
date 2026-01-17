@@ -3,4 +3,5 @@ the folder you're in is the repo root, there are files like ./entry.md and ./pro
 
 FIRST please read ./entry.md to see what this project is all about.
 THEN read ./progress.txt, pick the first in progress or unstarted task and work on one of its subtasks. Don't finish the FULL task. just a subtask
+IF there are any issues, blockers, impediments, please put it into blocker.md
 FINALLY create a new git commit of your progress and push it.
