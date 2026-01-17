@@ -3,6 +3,7 @@
 CLAUDE_TIMEOUT=900  # seconds (15 minutes)
 
 [ -f readme.md ] && rm readme.md
+[ -f ralph.webp ] && rm ralph.webp
 
 setup_hooks() {
 	rm -rf .git/hooks 2>/dev/null
