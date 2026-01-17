@@ -1,15 +1,15 @@
 so far this project is still in planning mode. your first step is to come up with the spec files.
 
-create/overwrite:
-1. entry.md
-2. progress.txt
-3. $system.md for each system that we will need to build
+Goal: create/overwrite:
+1. ./entry.md
+2. ./progress.txt
+3. ./$system.md for each system that we will need to build
 
-read userinput.txt and turn it into these files. a good list of system files might be db-schema.md, frontend.md, backend.md, fly-deployment.md, docker.md
+Source: read ./userinput.txt and turn it into these files. a good list of system files might be ./db-schema.md, ./frontend.md, ./backend.md, ./fly-deployment.md, ./docker.md
 
 here's an example for each file. follow the structure closely:
 
-entry.md
+./entry.md
 ```
 We are building a web application that is deployed on fly.io. Here is a list of all the subsystems that are documented in separate markdown files:
 - [Drizzle Database Scheme](./db.md)
@@ -27,7 +27,7 @@ Our list of technologies is:
 - shadcn
 ```
 
-progress.txt
+./progress.txt
 ```
 Each of this steps might have subtasks, so please refer to the stepfile ./step-$n.md for details!
 
@@ -44,5 +44,5 @@ Pick the first task that's in progress or not yet started and pick the most impo
 Acceptance criteria for each full step: Passing tests. Be specific about which tests are needed in ./step-$n.md
 ```
 
-In this example step-1.md would contain information like setting up hono, nginx as a reverse proxy to serve the static next files and hono api requests, and maybe a local test sh file which spins up postgres for running local tests.
+In this example ./step-1.md would contain information like setting up hono, nginx as a reverse proxy to serve the static next files and hono api requests, and maybe a local test sh file which spins up postgres for running local tests.
 Each progress.txt file ALWAYS ends with a step that says: "Create and commit ./done.txt in the root of this project (i.e. not ./proj/done.txt but ./done.txt)"
