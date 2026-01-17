@@ -33,19 +33,20 @@ Each of this steps might have subtasks, so please refer to the stepfile ./step-$
 
 Pick the first task that's in progress or not yet started and pick the most important subtask to work on. You're only doing ONE subtask right now, then update the status of that subtask in ./step-$n.md and mark the whole task as done in ./progress.txt if the task is now done.
 
-1. [NOT STARTED] Create dockerfile
-2. [NOT STARTED] Hono API scaffold
-3. [NOT STARTED] Add drizzle db schema
-4. [NOT STARTED] Write backend routes
-5. [NOT STARTED] Design frontend
-5. [NOT STARTED] Deploy to fly
-6. [NOT STARTED] Create and commit ./done.txt in the root of this project (i.e. ./done.txt not ./proj/done.txt; this step is straight forward, no markdown step file.)
+1. [NOT STARTED] init step: Call ./init.sh from the root of the repo. This step does not have a markdown step file, just call the script, that's it.
+2. [NOT STARTED] Create dockerfile
+3. [NOT STARTED] Hono API scaffold
+4. [NOT STARTED] Add drizzle db schema
+5. [NOT STARTED] Write backend routes
+6. [NOT STARTED] Design frontend
+7. [NOT STARTED] Deploy to fly
+8. [NOT STARTED] done step: Call ./done.sh from the root of the repo. This step does not have a markdown step file, just call the script, that's it.
 
 Acceptance criteria for each full step: Passing tests. Be specific about which tests are needed in ./step-$n.md
 ```
 
 In this example ./step-1.md would contain information like setting up hono, nginx as a reverse proxy to serve the static next files and hono api requests, and maybe a local test sh file which spins up postgres for running local tests.
-Each progress.txt file ALWAYS ends with a step that says: "Create and commit ./done.txt in the root of this project (i.e. ./done.txt not ./proj/done.txt; this step is straight forward, no markdown step file.)"
+Each progress.txt file ALWAYS ends with a 'done' step and starts with an 'init' step. Copy the exact wording for those two steps from above.
 
 ---
 
