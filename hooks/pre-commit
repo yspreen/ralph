@@ -1,0 +1,76 @@
+#!/bin/bash
+
+# Pre-commit hook to check for secrets in staged changes
+# Reads secret values from secrets.txt in the repository root
+
+REPO_ROOT=$(git rev-parse --show-toplevel)
+SECRETS_FILE="$REPO_ROOT/secrets.txt"
+
+if [ ! -f "$SECRETS_FILE" ]; then
+    exit 0
+fi
+
+# Extract secret values from secrets.txt
+# Supports formats:
+#   KEY=value
+#   KEY="value"
+#   KEY='value'
+#   key: value
+secrets=()
+while IFS= read -r line || [ -n "$line" ]; do
+    # Skip empty lines and comments
+    [[ -z "$line" || "$line" =~ ^[[:space:]]*# ]] && continue
+
+    # Try env format: KEY=value or KEY="value" or KEY='value'
+    if [[ "$line" =~ ^[A-Za-z_][A-Za-z0-9_]*= ]]; then
+        value="${line#*=}"
+        # Remove surrounding quotes if present
+        value="${value#\"}"
+        value="${value%\"}"
+        value="${value#\'}"
+        value="${value%\'}"
+        [ -n "$value" ] && secrets+=("$value")
+    # Try yaml-like format: key: value
+    elif [[ "$line" =~ ^[^:]+:[[:space:]]*.+ ]]; then
+        value="${line#*: }"
+        # Remove surrounding quotes if present
+        value="${value#\"}"
+        value="${value%\"}"
+        value="${value#\'}"
+        value="${value%\'}"
+        [ -n "$value" ] && secrets+=("$value")
+    fi
+done < "$SECRETS_FILE"
+
+if [ ${#secrets[@]} -eq 0 ]; then
+    exit 0
+fi
+
+# Get the staged diff (only additions)
+staged_diff=$(git diff --cached --diff-filter=ACMR)
+
+found_secrets=()
+for secret in "${secrets[@]}"; do
+    if echo "$staged_diff" | grep -qF "$secret"; then
+        found_secrets+=("$secret")
+    fi
+done
+
+if [ ${#found_secrets[@]} -gt 0 ]; then
+    echo "ERROR: Secrets detected in staged changes!"
+    echo ""
+    echo "The following secret values were found:"
+    for secret in "${found_secrets[@]}"; do
+        # Show truncated secret for safety
+        if [ ${#secret} -gt 8 ]; then
+            echo "  - ${secret:0:4}...${secret: -4}"
+        else
+            echo "  - ${secret:0:2}..."
+        fi
+    done
+    echo ""
+    echo "Remove these values before committing."
+    exit 1
+fi
+
+exit 0
