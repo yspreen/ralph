@@ -1,0 +1,2 @@
+We want to build tinder for horses. Use nextjs for frontend and backend, vercel to deploy, and neon as the database.
+Api credentials in secrets.txt
