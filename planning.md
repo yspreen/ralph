@@ -46,3 +46,12 @@ Acceptance criteria for each full step: Passing tests. Be specific about which t
 
 In this example ./step-1.md would contain information like setting up hono, nginx as a reverse proxy to serve the static next files and hono api requests, and maybe a local test sh file which spins up postgres for running local tests.
 Each progress.txt file ALWAYS ends with a step that says: "Create and commit ./done.txt in the root of this project (i.e. not ./proj/done.txt but ./done.txt)"
+
+---
+
+the planning phase is done when the files are all created
+1. ./entry.md
+2. ./progress.txt
+3. ./$system.md for each system that we will need to build
+
+do not run any code in the planning phase just write those files.
