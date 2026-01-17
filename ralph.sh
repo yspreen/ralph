@@ -4,5 +4,5 @@
 
 while ! [ -f done.txt ]
 do
-	cat prompt.md | claude --dangerously-skip-permissions
+	claude --dangerously-skip-permissions -p "$(cat prompt.md)"
 done
