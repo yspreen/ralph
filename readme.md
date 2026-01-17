@@ -16,4 +16,13 @@ You can optionally get feedback on your userinput before starting the loop with 
 ```
 Can you give me feedback on ./userinput.txt?
 Is this project definition complete and understandable?
+Is there a definition of done? Does it include which tests to run? Does it include something like
+"Mocks are for isolation, not for skipping hard tests"
+and "100 tests passing means nothing if those tests use mocks for the critical path"
+```
+
+and if you like the feedback
+
+```
+great please make those changes
 ```
