@@ -33,7 +33,7 @@ Each of this steps might have subtasks, so please refer to the stepfile ./step-$
 
 Pick the first task that's in progress or not yet started and pick the most important subtask to work on. You're only doing ONE subtask right now, then update the status of that subtask in ./step-$n.md and mark the whole task as done in ./progress.txt if the task is now done.
 
-1. [NOT STARTED] init step: Call ./init.sh from the root of the repo. This step does not have a markdown step file, just call the script, that's it.
+1. [NOT STARTED] Init step
 2. [NOT STARTED] Create dockerfile
 3. [NOT STARTED] Hono API scaffold
 4. [NOT STARTED] Add drizzle db schema
@@ -45,7 +45,7 @@ Pick the first task that's in progress or not yet started and pick the most impo
 Acceptance criteria for each full step: Passing tests. Be specific about which tests are needed in ./step-$n.md
 ```
 
-In this example ./step-1.md would contain information like setting up hono, nginx as a reverse proxy to serve the static next files and hono api requests, and maybe a local test sh file which spins up postgres for running local tests.
+In this example ./step-2.md would contain information like setting up hono, nginx as a reverse proxy to serve the static next files and hono api requests, and maybe a local test sh file which spins up postgres for running local tests.
 Each progress.txt file ALWAYS ends with a 'done' step and starts with an 'init' step. Copy the exact wording for those two steps from above.
 DO NOT run any of these steps just write them! Don't run init step either!
 
