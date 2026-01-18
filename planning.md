@@ -47,6 +47,7 @@ Acceptance criteria for each full step: Passing tests. Be specific about which t
 
 In this example ./step-1.md would contain information like setting up hono, nginx as a reverse proxy to serve the static next files and hono api requests, and maybe a local test sh file which spins up postgres for running local tests.
 Each progress.txt file ALWAYS ends with a 'done' step and starts with an 'init' step. Copy the exact wording for those two steps from above.
+DO NOT run any of these steps just write them! Don't run init step either!
 
 ---
 
