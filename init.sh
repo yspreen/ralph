@@ -11,4 +11,6 @@ cd "$SCRIPT_DIR" || exit 1
 [ "$1" = "3" ] && claude --dangerously-skip-permissions -p "Go into all step files (except 1, that's just init) and make sure that any time we read/write env vars for local dev or any secrets, we use ./secrets.txt and don't create multiple sources of truth for those values"
 [ "$1" = "4" ] && [ -d proj ] && claude --dangerously-skip-permissions -p "Go into all step files (except 1, that's just init) and make sure that all source code is explicityly written in ./proj inside this repo. If there are multiple sub components, it would be ./proj/nextjs, ./proj/hono etc."
 
-echo DONE! Please mark this sub step as done in ./progress.txt, commit, push, end turn.
+echo DONE! Please mark this sub step as done in ./progress.txt
+echo Add progress.txt to git staged changes, as well as all changed step md files.
+echo Then commit, push, end turn.
