@@ -2,7 +2,7 @@
 
 CLAUDE_TIMEOUT=900  # seconds (15 minutes)
 
-[ -f readme.md ] && rm readme.md
+[ -f readme.md ] && grep ralph.webp readme.md >/dev/null && rm readme.md
 [ -f ralph.webp ] && rm ralph.webp
 
 setup_hooks() {
