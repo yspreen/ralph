@@ -9,14 +9,28 @@ SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]:-$0}"; )" &> /dev/null && 
 cd "$SCRIPT_DIR" || exit 1
 
 run_clod() {
-	claude --dangerously-skip-permissions -p "$1" &
+	OUTPUT_FILE=$(mktemp)
+	claude --dangerously-skip-permissions -p "$1" > "$OUTPUT_FILE" 2>&1 &
 	pid=$!
 	(sleep "$CLAUDE_TIMEOUT" && kill "$pid" 2>/dev/null) &
 	killer=$!
+	# Monitor output for "No messages returned" error
+	(while kill -0 "$pid" 2>/dev/null; do
+		if grep -q "No messages returned" "$OUTPUT_FILE" 2>/dev/null; then
+			kill "$pid" 2>/dev/null
+			break
+		fi
+		sleep 1
+	done) &
+	monitor=$!
 	wait "$pid"
 	status=$?
 	kill "$killer" 2>/dev/null
+	kill "$monitor" 2>/dev/null
 	wait "$killer" 2>/dev/null
+	wait "$monitor" 2>/dev/null
+	cat "$OUTPUT_FILE"
+	rm -f "$OUTPUT_FILE"
 	return $status
 }
 
