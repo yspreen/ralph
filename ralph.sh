@@ -15,7 +15,7 @@ run_cycle() {
 	if [ -f blocker.md ]
 	then
 		claude --dangerously-skip-permissions -p "$(cat blocked-prompt.md)"
-		rm blocker.md
+		git rm blocker.md
 	else
 		claude --dangerously-skip-permissions -p "$(cat prompt.md)"
 	fi
