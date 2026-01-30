@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Get list of unstaged files (untracked files)
+unstaged_files=$(git ls-files --others --exclude-standard)
+
+if [ -n "$unstaged_files" ]; then
+    echo ""
+    echo "Here are all the unstaged files after the commit. Did you mean to ignore them? Should they be added to .gitignore?"
+    echo ""
+    echo "$unstaged_files"
+    echo ""
+fi
